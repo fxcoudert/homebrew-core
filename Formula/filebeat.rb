@@ -45,7 +45,7 @@ class Filebeat < Formula
     xy = Language::Python.major_minor_version "python3"
     ENV.prepend_create_path "PYTHONPATH", buildpath/"vendor/lib/python#{xy}/site-packages"
 
-    # Help Pillow find zlib
+    # Help Pillow find zlib2
     ENV.append_to_cflags "-I#{MacOS.sdk_path}/usr/include"
 
     resource("virtualenv").stage do
