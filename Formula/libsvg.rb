@@ -24,6 +24,9 @@ class Libsvg < Formula
     sha256 "a6de74ce690bcc7dffd353139182dc0d896250cdca652c315356349f7e78729e" => :mavericks
   end
 
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+  depends_on "libtool" => :build
   depends_on "pkg-config" => :build
   depends_on "jpeg"
   depends_on "libpng"
@@ -31,6 +34,7 @@ class Libsvg < Formula
   uses_from_macos "libxml2"
 
   def install
+    system "autoreconf", "-fiv"
     system "./configure", "--prefix=#{prefix}"
     system "make", "install"
   end
